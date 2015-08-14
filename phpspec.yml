@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: DoS\TaggingBundle
+        psr4_prefix: DoS\TaggingBundle
+        src_path: .

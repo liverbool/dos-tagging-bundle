@@ -1,0 +1,21 @@
+DoS\TaggingBundle\Model\Tag:
+    type: mappedSuperclass
+    table: dos_tag
+
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            unique: true
+
+    oneToMany:
+        taggings:
+            targetEntity: DoS\TaggingBundle\Model\TaggingInterface
+            mappedBy: tag
+            cascade: [all]

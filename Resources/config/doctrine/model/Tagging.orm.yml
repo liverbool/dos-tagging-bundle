@@ -1,0 +1,38 @@
+DoS\TaggingBundle\Model\Tagging:
+    type: mappedSuperclass
+    table: dos_tagging
+
+    indexes:
+        IDX_ORIGIN_ALIAS:
+            columns:
+                - origin_alias
+
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        originId:
+            type: integer
+            column: origin_id
+
+        originType:
+            type: string
+            column: origin_type
+
+        originAlias:
+            type: string
+            column: origin_alias
+
+    manyToOne:
+        tag:
+            targetEntity: DoS\TaggingBundle\Model\TagInterface
+            inversedBy: taggings
+            joinColumn:
+                nullable: false
+                onDelete: "CASCADE"
+                image_id:
+                    referencedColumnName: id

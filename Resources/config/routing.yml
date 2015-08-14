@@ -1,0 +1,5 @@
+dos_tagging_search:
+    path: /tags/search
+    defaults:
+        _controller: dos.controller.tag:searchJsonAction
+        _format: json

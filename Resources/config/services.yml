@@ -1,0 +1,20 @@
+parameters:
+    dos.listener.tagging.class: DoS\TaggingBundle\EventListener\TaggingListener
+    dos.form.type.tagging.class: DoS\TaggingBundle\Form\Type\TaggingType
+
+services:
+    dos.form.type.tagging:
+        class: %dos.form.type.tagging.class%
+        arguments:
+            - @dos.originator
+            - @dos.repository.tag
+            - @dos.repository.tagging
+        tags:
+            - {name: form.type, alias: dos_tagging}
+
+    dos.listener.tagging:
+        class: %dos.listener.tagging.class%
+        calls:
+            - [setContainer, [@service_container]]
+        tags:
+            - {name: doctrine.event_subscriber, connection: default}

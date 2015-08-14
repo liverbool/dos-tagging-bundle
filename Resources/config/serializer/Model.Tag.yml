@@ -1,0 +1,12 @@
+DoS\TaggingBundle\Model\Tag:
+    exclusion_policy: ALL
+    xml_root_name: tag
+
+    properties:
+        id:
+            expose: true
+            type: integer
+
+        name:
+            expose: true
+            type: string
