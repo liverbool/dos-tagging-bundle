@@ -15,7 +15,11 @@ class TagRepository extends EntityRepository
      */
     public function resolveWithString($string, $delimiter = ',')
     {
-        $string = array_unique(explode($delimiter, preg_replace('/\s++/', ' ', strtolower($string))));
+        if (empty($string)) {
+            return array();
+        }
+
+        $string = array_unique(explode($delimiter, trim(preg_replace('/\s++/', ' ', strtolower($string)))));
 
         $tags = $this->getQueryBuilder()
             ->where(parent::expr()->in('LOWER(o.name)', ':string'))

@@ -18,11 +18,6 @@ class TaggingRepository extends EntityRepository
      */
     public function findWithTagAndAlias(TagInterface $tag, OriginContextInterface $alias, $createWhenNone = false)
     {
-        // new tag
-        if (!$tag->getId()) {
-            return $createWhenNone ? $this->createNew() : null;
-        }
-
         $tagging = $this->findOneBy(array(
             'tag' => $tag,
             'originAlias' => $alias->getOriginalAlias(),
