@@ -48,6 +48,12 @@ class TaggingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->addModelTransformer(new TaggingTransformer($this->tagRepository, $options['delimiter']));
+
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function(FormEvent $event) use ($options) {
+           $tags = $event->getData();
+           $event->setData(is_array($tags) ? implode($options['delimiter'], $tags) : $tags);
+        });
+
         $builder->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) {
             $object = $event->getForm()->getParent()->getData();
 
@@ -56,6 +62,7 @@ class TaggingType extends AbstractType
             }
 
             $tags = $this->tagRepository->resolveWithString($event->getData()) ?: array();
+            $object->setTags(null);
 
             foreach ($tags as $tag) {
                 $tagging = $this->taggingRepository->findWithTagAndAlias($tag, $object, true);
