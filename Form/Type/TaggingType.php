@@ -64,6 +64,20 @@ class TaggingType extends AbstractType
             $tags = $this->tagRepository->resolveWithString($event->getData()) ?: array();
             $object->setTags(null);
 
+            /** @var TaggingInterface[] $oldTaggings */
+            $oldTaggings = $this->taggingRepository->findBy(array(
+                'originAlias' => $object->getOriginalAlias(),
+                'originId' => $object->getId()
+            ));
+
+            foreach ($oldTaggings as $oldTagging) {
+                if (!in_array($oldTagging->getTag(), $tags)) {
+                    $this->taggingRepository->getManager()->remove($oldTagging);
+                }
+            }
+
+            $this->taggingRepository->getManager()->flush();
+
             foreach ($tags as $tag) {
                 $tagging = $this->taggingRepository->findWithTagAndAlias($tag, $object, true);
                 $tagging->setTag($tag);
