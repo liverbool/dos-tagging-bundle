@@ -32,15 +32,6 @@ class TaggingRepository extends EntityRepository
     }
 
     /**
-     * @param TaggingInterface $tagging
-     */
-    public function save(TaggingInterface $tagging)
-    {
-        $this->_em->persist($tagging);
-        $this->_em->flush($tagging);
-    }
-
-    /**
      * @param OriginContextInterface $alias
      *
      * @return TaggingInterface[]

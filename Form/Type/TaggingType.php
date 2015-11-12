@@ -6,6 +6,7 @@ use DoS\ResourceBundle\Model\OriginContextInterface;
 use DoS\TaggingBundle\Doctrine\ORM\TaggingRepository;
 use DoS\TaggingBundle\Doctrine\ORM\TagRepository;
 use DoS\TaggingBundle\Form\DataTransformer\TaggingTransformer;
+use DoS\TaggingBundle\Model\TaggingInterface;
 use DoS\TaggingBundle\Model\TagsAwareInterface;
 use Sylius\Component\Originator\Originator\OriginatorInterface;
 use Symfony\Component\Form\AbstractType;
