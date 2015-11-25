@@ -38,6 +38,8 @@ class TaggingRepository extends EntityRepository
             $tagging = $this->createNew();
         }
 
+        $tagging->setTag($tag);
+
         return $tagging;
     }
 

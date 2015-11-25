@@ -55,6 +55,7 @@ class TaggingType extends AbstractType
            $event->setData(is_array($tags) ? implode($options['delimiter'], $tags) : $tags);
         });
 
+        // TODO: BUG FIXME not work when object have no id (none persited object)
         $builder->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) {
             $object = $event->getForm()->getParent()->getData();
 
@@ -81,8 +82,6 @@ class TaggingType extends AbstractType
 
             foreach ($tags as $tag) {
                 $tagging = $this->taggingRepository->findWithTagAndAlias($tag, $object, true);
-                $tagging->setTag($tag);
-
                 $this->originator->setOrigin($tagging, $object);
                 $this->taggingRepository->save($tagging);
 
