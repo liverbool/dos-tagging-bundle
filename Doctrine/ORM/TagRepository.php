@@ -8,6 +8,16 @@ use DoS\TaggingBundle\Model\TagInterface;
 class TagRepository extends EntityRepository
 {
     /**
+     * @return TagInterface
+     */
+    public function createNew()
+    {
+        $className = $this->getClassName();
+
+        return new $className();
+    }
+
+    /**
      * @param $string
      * @param string $delimiter
      *

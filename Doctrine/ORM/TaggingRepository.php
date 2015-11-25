@@ -10,6 +10,16 @@ use DoS\TaggingBundle\Model\TagInterface;
 class TaggingRepository extends EntityRepository
 {
     /**
+     * @return TaggingInterface
+     */
+    public function createNew()
+    {
+        $className = $this->getClassName();
+
+        return new $className();
+    }
+
+    /**
      * @param TagInterface $tag
      * @param OriginContextInterface $alias
      * @param bool|false $createWhenNone
