@@ -2,9 +2,9 @@
 
 namespace DoS\TaggingBundle;
 
-use DoS\CernelBundle\Config\AbstractBundle;
+use DoS\ResourceBundle\DependencyInjection\AbstractResourceBundle;
 
-class DoSTaggingBundle extends AbstractBundle
+class DoSTaggingBundle extends AbstractResourceBundle
 {
     /**
      * {@inheritdoc}

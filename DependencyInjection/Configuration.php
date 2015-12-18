@@ -16,23 +16,29 @@ class Configuration extends AbstractConfiguration
         $rootNode = $treeBuilder->root('dos_tagging');
 
         $this->setDefaults($rootNode, array(
-            'classes' => array(
+            'resources' => array(
                 'tag' => array(
-                    'model' => 'DoS\TaggingBundle\Model\Tag',
-                    'interface' => 'DoS\TaggingBundle\Model\TagInterface',
-                    'repository' => 'DoS\TaggingBundle\Doctrine\ORM\TagRepository',
-                    'controller' => 'DoS\TaggingBundle\Controller\TagController',
+                    'classes' => array(
+                        'model' => 'DoS\TaggingBundle\Model\Tag',
+                        'interface' => 'DoS\TaggingBundle\Model\TagInterface',
+                        'repository' => 'DoS\TaggingBundle\Doctrine\ORM\TagRepository',
+                        'controller' => 'DoS\TaggingBundle\Controller\TagController',
+                    ),
+                    'validation_groups' => array(
+                        'default' => array('dos'),
+                    ),
                 ),
                 'tagging' => array(
-                    'model' => 'DoS\TaggingBundle\Model\Tagging',
-                    'interface' => 'DoS\TaggingBundle\Model\TaggingInterface',
-                    'repository' => 'DoS\TaggingBundle\Doctrine\ORM\TaggingRepository',
-                    'controller' => 'DoS\TaggingBundle\Controller\TaggingController',
+                    'classes' => array(
+                        'model' => 'DoS\TaggingBundle\Model\Tagging',
+                        'interface' => 'DoS\TaggingBundle\Model\TaggingInterface',
+                        'repository' => 'DoS\TaggingBundle\Doctrine\ORM\TaggingRepository',
+                        'controller' => 'DoS\TaggingBundle\Controller\TaggingController',
+                    ),
+                    'validation_groups' => array(
+                        'default' => array('dos'),
+                    ),
                 ),
-            ),
-            'validation_groups' => array(
-                'tag' => array('dos'),
-                'tagging' => array('dos')
             ),
         ));
 

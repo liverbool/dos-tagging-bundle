@@ -2,9 +2,9 @@
 
 namespace DoS\TaggingBundle\DependencyInjection;
 
-use DoS\CernelBundle\Config\AbstractExtension;
+use DoS\ResourceBundle\DependencyInjection\AbstractResourceExtension;
 
-class DoSTaggingExtension extends AbstractExtension
+class DoSTaggingExtension extends AbstractResourceExtension
 {
     protected $applicationName = 'dos';
 
