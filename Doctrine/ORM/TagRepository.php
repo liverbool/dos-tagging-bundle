@@ -29,7 +29,7 @@ class TagRepository extends EntityRepository
             return array();
         }
 
-        $string = array_unique(explode($delimiter, preg_replace('/\s++/', ' ', strtolower($string))));
+        $string = array_unique(explode($delimiter, preg_replace('/ {2,}/', ' ', strtolower($string))));
         $string = array_map('trim', $string);
 
         $tags = $this->getQueryBuilder()
