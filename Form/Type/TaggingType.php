@@ -83,7 +83,7 @@ class TaggingType extends AbstractType
             foreach ($tags as $tag) {
                 $tagging = $this->taggingRepository->findWithTagAndAlias($tag, $object, true);
                 $this->originator->setOrigin($tagging, $object);
-                $this->taggingRepository->save($tagging);
+                $this->taggingRepository->add($tagging);
 
                 $object->addTag($tag);
             }

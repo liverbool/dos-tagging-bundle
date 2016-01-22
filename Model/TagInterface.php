@@ -3,11 +3,12 @@
 namespace DoS\TaggingBundle\Model;
 
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * @author liverbool <nukboon@gmail.com>
  */
-interface TagInterface
+interface TagInterface extends ResourceInterface
 {
     /**
      * @return int
