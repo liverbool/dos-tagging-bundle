@@ -32,7 +32,7 @@ class TagRepository extends EntityRepository
         $string = array_unique(explode($delimiter, preg_replace('/ {2,}/', ' ', strtolower($string))));
         $string = array_map('trim', $string);
 
-        $tags = $this->getQueryBuilder()
+        $tags = $this->createQueryBuilder('o')
             ->where(parent::expr()->in('LOWER(o.name)', ':string'))
             ->setParameter('string', $string)
             ->getQuery()->getResult()
@@ -69,7 +69,7 @@ class TagRepository extends EntityRepository
      */
     public function search($keyword, $limit = 10)
     {
-        return $this->getQueryBuilder()
+        return $this->createQueryBuilder('o')
             ->where(parent::expr()->like('LOWER(o.name)', ':keyword'))
             ->setParameter('keyword', '%'.$keyword.'%')
             ->setMaxResults($limit)

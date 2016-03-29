@@ -50,7 +50,7 @@ class TaggingRepository extends EntityRepository
      */
     public function findWidthOriginAlias(OriginContextInterface $alias)
     {
-        return $this->getQueryBuilder()
+        return $this->createQueryBuilder('o')
             ->join('o.tag', 't')
             ->where('o.originAlias = :originAlias')
             ->andWhere('o.originId = :originId')
