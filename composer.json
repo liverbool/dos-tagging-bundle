@@ -12,7 +12,7 @@
     "require": {
         "doctrine/orm": "~2.4",
         "symfony/form": "~2.5",
-        "liverbool/dos-resource-bundle": "0.18.*"
+        "liverbool/dos-resource-bundle": "0.19.*"
     },
     "require-dev": {
         "liil/kint": "1.0",
@@ -29,7 +29,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.18-dev"
+            "dev-master": "0.19-dev"
         }
     }
 }
